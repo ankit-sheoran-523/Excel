@@ -37,7 +37,6 @@ Total Amount Saved = ([Quantity] * [Unit_Price]) - [Spend]
 Defect Rate = IFERROR(Defective_Units / Quantity, 0)
 
 Compliance Score = IF([@Compliance]="Yes", 1, 0)
-
 ```
 
 ### 2. Advanced Supply Chain Status Logic (Handling Nulls)
@@ -49,7 +48,6 @@ Delivery_Status = IFS(
     AND(ISBLANK([@Delivery_Date]), [@Status]="Delivered"), "Not Updated",
     TRUE, [@Delivery_Date] - [@Order_Date]
 )
-
 ```
 
 ### 3. Dynamic UI Filtering ("Invisible Bridge" Architecture)
@@ -64,7 +62,6 @@ XLOOKUP(
     0, 
     1
 )
-
 ```
 
 ---
@@ -76,7 +73,6 @@ The dashboard provides side-by-side comparisons of vendors, categories, and deli
 * **Market Overview:** $4.53M Total Spend, $3.9M Total Amount Saved, and an 82% overall compliance rate.
 * **Pricing & Efficiency:** Discovered an 8% overall procurement efficiency, but revealed a massive discrepancy where Tech Hardware yielded high savings while Raw Materials yielded almost zero.
 * **Vendor Risk Assessment:** Isolated specific liabilities, such as Delta Logistics, tracking their specific contribution to the $2.5M Defected Units Cost.
-
 ---
 
 ## Repository Structure
@@ -90,7 +86,6 @@ Procurement-Analytics-Project/
 ├── Procurement_Analysis_Dashboard.xlsx     <-- Interactive Dashboard (with Power Query backend)
 ├── not_updated_Procurement_dashboard.pptx  <-- Executive Case Study Presentation
 └── README.md                               <-- Documentation
-
 ```
 
 ### How to Run the Project
@@ -99,5 +94,3 @@ Procurement-Analytics-Project/
 2. **Re-link Pipeline:** Open `Procurement_Analysis_Dashboard.xlsx`. Go to Data > Get Data > Data Source Settings, and change the source path to point to your downloaded `Raw_Data` folder.
 3. **Clean & Transform:** Click "Refresh All" on the Data ribbon. Power Query will automatically execute the M-Code cleaning scripts and update the data model.
 4. **Explore Dashboard:** Use the styled slicer buttons on the right-hand panel to dynamically filter the Vendor Scorecards and KPIs.
-
-```
